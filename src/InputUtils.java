@@ -25,6 +25,19 @@ public class InputUtils {
         return value;
     }
 
+//    public static int readIntOrDefault(String message, int defaultValue) {
+//        System.out.print(message);
+//        String line = scanner.nextLine();       // читаем строку полностью
+//        if (line.isEmpty()) {                   // если пусто
+//            return defaultValue;                // возвращаем значение по умолчанию
+//        }
+//        try {
+//            return Integer.parseInt(line);      // преобразуем строку в число
+//        } catch (NumberFormatException e) {
+//            System.out.println("Ошибка! Введите целое число.");
+//            return readIntOrDefault(message, defaultValue); // повторяем ввод
+//        }
+//    }
     // Ввод массива оценок
     public static int[] readGrades(String message) {
         System.out.print(message);

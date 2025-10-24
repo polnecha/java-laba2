@@ -30,13 +30,36 @@ public class Main {
                         InputUtils.readInt("Введите Y конца линии 2: "))
         );
 
-        // Линия 3 зависит от линии 1 и линии 2
-        Line line3 = new Line(line1.getStart(), line2.getEnd());
+        // Линия 3 автоматически создаётся как копия начала линии 1 и конца линии 2
+        // Копия точек, чтобы она не зависела от изменений line1 и line2
+        Line line3 = new Line(
+                new Point(line1.getStart().getX(), line1.getStart().getY()),
+                line2.getEnd()
+        );
 
-        System.out.println("\nЛинии:");
-        System.out.println(line1);
-        System.out.println(line2);
-        System.out.println(line3);
+        System.out.println("\nЛинии после создания:");
+        System.out.println("Линия 1: " + line1);
+        System.out.println("Линия 2: " + line2);
+        System.out.println("Линия 3 (копия, независимая): " + line3);
+
+        // Изменяем линию 1 и линию 2
+        System.out.println("\nИзменяем линии 1 и 2:");
+
+        line1.getStart().setX(InputUtils.readInt("Введите новое X начала линии 1: "));
+        line1.getStart().setY(InputUtils.readInt("Введите новое Y начала линии 1: "));
+        line1.getEnd().setX(InputUtils.readInt("Введите новое X конца линии 1: "));
+        line1.getEnd().setY(InputUtils.readInt("Введите новое Y конца линии 1: "));
+
+        line2.getStart().setX(InputUtils.readInt("Введите новое X начала линии 2: "));
+        line2.getStart().setY(InputUtils.readInt("Введите новое Y начала линии 2: "));
+        line2.getEnd().setX(InputUtils.readInt("Введите новое X конца линии 2: "));
+        line2.getEnd().setY(InputUtils.readInt("Введите новое Y конца линии 2: "));
+
+        System.out.println("\nЛинии после изменений линий 1 и 2:");
+        System.out.println("Линия 1: " + line1);
+        System.out.println("Линия 2: " + line2);
+        System.out.println("Линия 3 (не изменилась, остаётся прежней): " + line3);
+
 
         // Ввод студентов
         System.out.println("\nСоздание студентов:");

@@ -9,8 +9,69 @@
  • Может возвращать текстовое представление вида “{X;Y}” 
 Необходимо создать три точки с разными координатами и вывести на экран их текстовое представление.
 ### Алгоритм решения
-Алгоритм решения задачи
+```java 
+public class Point {
+    private int x;
+    private int y;
 
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX() { return x; }
+    public void setX(int x) { this.x = x; }
+
+    public int getY() { return y; }
+    public void setY(int y) { this.y = y; }
+
+    @Override
+    public String toString() {
+        return "{" + x + ";" + y + "}";
+    }
+}
+```
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Создание точек:");
+        Point p1 = new Point(InputUtils.readInt("Введите X для точки 1: "),
+                InputUtils.readInt("Введите Y для точки 1: "));
+        Point p2 = new Point(InputUtils.readInt("Введите X для точки 2: "),
+                InputUtils.readInt("Введите Y для точки 2: "));
+        Point p3 = new Point(InputUtils.readInt("Введите X для точки 3: "),
+                InputUtils.readInt("Введите Y для точки 3: "));
+
+        System.out.println("\nТочки:");
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p3);
+    }
+}
+```
+```java
+import java.util.Scanner;
+
+public class InputUtils {
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static int readInt(String message) {
+        int value;
+        while (true) {
+            System.out.print(message);
+            if (scanner.hasNextInt()) {
+                value = scanner.nextInt();
+                scanner.nextLine(); // очищаем буфер
+                break;
+            } else {
+                System.out.println("Ошибка! Введите целое число.");
+                scanner.nextLine();
+            }
+        }
+        return value;
+    }
+}
+```
 # Задание 2
 ## Задача 1
 ### Текст задачи
@@ -25,8 +86,56 @@
 4.	 После создания всех трех объектов измените координаты первой и второй линий, причем сделайте это таким образом, чтобы положение третьей линии соответствовало требованиям пункта 3.
 5.	Измените координаты первой линии так, чтобы при этом не изменились, координаты третьей линии.
 ### Алгоритм решения
-Алгоритм решения задачи
+```java 
+public class Line {
+    private Point start;
+    private Point end;
 
+    public Line(Point start, Point end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    public Point getStart() { return start; }
+    public void setStart(Point start) { this.start = start; }
+
+    public Point getEnd() { return end; }
+    public void setEnd(Point end) { this.end = end; }
+
+    @Override
+    public String toString() {
+        return "Линия от " + start + " до " + end;
+    }
+}
+
+```
+```java
+public class Main {
+    public static void main(String[] args) {
+        Line line1 = new Line(
+                new Point(InputUtils.readInt("Введите X начала линии 1: "),
+                        InputUtils.readInt("Введите Y начала линии 1: ")),
+                new Point(InputUtils.readInt("Введите X конца линии 1: "),
+                        InputUtils.readInt("Введите Y конца линии 1: "))
+        );
+
+        Line line2 = new Line(
+                new Point(InputUtils.readInt("Введите X начала линии 2: "),
+                        InputUtils.readInt("Введите Y начала линии 2: ")),
+                new Point(InputUtils.readInt("Введите X конца линии 2: "),
+                        InputUtils.readInt("Введите Y конца линии 2: "))
+        );
+        
+        Line line3 = new Line(
+                new Point(line1.getStart().getX(), line1.getStart().getY()),
+                line2.getEnd()
+        );
+
+        System.out.println("\nЛинии после создания:");
+        System.out.println("Линия 1: " + line1);
+        System.out.println("Линия 2: " + line2);
+        System.out.println("Линия 3 (копия, независимая): " + line3);
+```
 # Задание 3
 ## Задача 1
 ### Текст задачи
@@ -51,8 +160,40 @@
 • Создайте и выведите на экран точку с координатами 25;6 
 • Создайте и выведите на экран точку с координатами 7;8
 ### Алгоритм решения
-Алгоритм решения задачи
+```java
+import java.util.Scanner;
 
+public class InputUtils {
+    public static int readIntOrDefault(String message, int defaultValue) {
+        System.out.print(message);
+        String line = scanner.nextLine();
+        if (line.isEmpty()) {                   // если пусто
+            return defaultValue;                // возвращаем значение по умолчанию
+        }
+        try {
+            return Integer.parseInt(line);
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка! Введите целое число.");
+            return readIntOrDefault(message, defaultValue);
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Point p1 = new Point(InputUtils.readIntOrDefault("Введите X для точки 1: ", 0),
+                InputUtils.readIntOrDefault("Введите Y для точки 1: ", 0));
+        Point p2 = new Point(InputUtils.readIntOrDefault("Введите X для точки 2: ", 0),
+                InputUtils.readIntOrDefault("Введите Y для точки 2: ", 0));
+        Point p3 = new Point(InputUtils.readIntOrDefault("Введите X для точки 3: ", 0),
+                InputUtils.readIntOrDefault("Введите Y для точки 3: ", 0));
+
+        System.out.println(p1);
+        System.out.println(p2);
+        System.out.println(p3);
+    }
+}
+
+```
 ## Задача 7
 ### Текст задачи
 Создаем Студента. 

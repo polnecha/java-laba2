@@ -2,13 +2,18 @@ public class Line {
     private Point start;
     private Point end;
 
-    // Конструктор
     public Line(Point start, Point end) {
         this.start = start;
         this.end = end;
     }
 
-    // Геттеры и сеттеры
+    public static Line copy(Line original) {
+        return new Line(
+                new Point(original.getStart().getX(), original.getStart().getY()),
+                new Point(original.getEnd().getX(), original.getEnd().getY())
+        );
+    }
+
     public Point getStart() {
         return start;
     }
