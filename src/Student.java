@@ -4,7 +4,7 @@ public class Student {
     private String name;
     private int[] grades;
 
-    // Конструктор: имя + оценки (может быть пустой массив)
+    // Конструктор: имя + оценки
     public Student(String name, int... grades) {
         this.name = name;
         if (grades != null) {
@@ -14,7 +14,6 @@ public class Student {
         }
     }
 
-    // Геттеры и сеттеры
     public String getName() {
         return name;
     }
@@ -24,29 +23,34 @@ public class Student {
     }
 
     public void setGrades(int[] grades) {
-        this.grades = Arrays.copyOf(grades, grades.length);
+        this.grades = grades; // присваиваем сслыыку
     }
 
+    //  копирование оценок (для Андрея)
+    public void setGradesCopy(int[] grades) {
+        this.grades = Arrays.copyOf(grades, grades.length);
+    }
     // Средний балл
     public double average() {
-        if (grades.length == 0) return 0;
+        if (grades.length == 0) return 0.0;
         int sum = 0;
         for (int g : grades) sum += g;
         return (double) sum / grades.length;
     }
 
-    // Является ли отличником
+    // Проверка отличник ли студент
     public boolean isExcellent() {
         if (grades.length == 0) return false;
         for (int g : grades) {
-            if (g < 5) return false;
+            if (g < 5) return false; // если есть хотя бы одна не "5"
         }
         return true;
     }
-
-    // Текстовое представление студента
     @Override
     public String toString() {
-        return name + ": " + Arrays.toString(grades);
-    }
+        if (grades.length == 0) {
+            return name + ": оценок нет";
+        } else {
+            return name + ": " + Arrays.toString(grades);
+        }    }
 }

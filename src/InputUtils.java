@@ -41,9 +41,15 @@ public class InputUtils {
     // Ввод массива оценок
     public static int[] readGrades(String message) {
         System.out.print(message);
-        String line = scanner.nextLine();
-        String[] tokens = line.split("[,\\s]+"); // разделители: пробел или запятая
+        String line = scanner.nextLine().trim(); // убираем лишние пробелы
+
+        if (line.isEmpty()) {
+            return new int[0];
+        }
+
+        String[] tokens = line.split("[,\\s]+");
         int[] grades = new int[tokens.length];
+
         for (int i = 0; i < tokens.length; i++) {
             try {
                 grades[i] = Integer.parseInt(tokens[i]);
@@ -52,6 +58,21 @@ public class InputUtils {
                 grades[i] = 0;
             }
         }
+
         return grades;
+    }
+    // Ввод имени (только буквы)
+    public static String readName(String message) {
+        String name;
+        while (true) {
+            System.out.print(message);
+            name = scanner.nextLine().trim();
+
+            if (name.matches("[a-zA-Zа-яА-ЯёЁ]+")) {
+                return name;
+            } else {
+                System.out.println("Ошибка! Имя может содержать только буквы. Попробуйте снова.");
+            }
+        }
     }
 }
