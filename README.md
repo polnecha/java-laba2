@@ -407,5 +407,22 @@ public class InputUtils {
 1. Создайте студента Васю с оценками 3,4,5,4   
 2. Создайте студента Петю с оценками 5,5,5,5  
 3. Выведите для обоих студентов информацию о среднем балле и являются ли они отличниками  
-### Алгоритм решения
-Алгоритм решения задачи
+### Алгоритм решения"
+```java
+   // Средний балл
+    public double average() {
+        if (grades.length == 0) return 0.0;
+        int sum = 0;
+        for (int g : grades) sum += g;
+        return (double) sum / grades.length;
+    }
+
+    // Проверка отличник ли студент
+    public boolean isExcellent() {
+        if (grades.length == 0) return false;
+        for (int g : grades) {
+            if (g < 5) return false; // если есть хотя бы одна не "5"
+        }
+        return true;
+    }
+```
