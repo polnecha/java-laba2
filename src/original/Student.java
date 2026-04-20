@@ -1,3 +1,5 @@
+package original;
+
 import java.util.Arrays;
 
 public class Student {
@@ -28,6 +30,7 @@ public class Student {
 
     //  копирование оценок (для Андрея)
     public void setGradesCopy(int[] grades) {
+
         this.grades = Arrays.copyOf(grades, grades.length);
     }
     // Средний балл

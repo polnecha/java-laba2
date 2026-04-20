@@ -1,3 +1,5 @@
+package original;
+
 public class Line {
     private Point start;
     private Point end;
@@ -7,22 +9,19 @@ public class Line {
         this.end = end;
     }
 
-    public static Line copy(Line original) {
-        return new Line(
-                new Point(original.getStart().getX(), original.getStart().getY()),
-                new Point(original.getEnd().getX(), original.getEnd().getY())
-        );
-    }
 
     public Point getStart() {
+
         return start;
     }
 
     public void setStart(Point start) {
+
         this.start = start;
     }
 
     public Point getEnd() {
+
         return end;
     }
 

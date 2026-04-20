@@ -11,13 +11,13 @@
 Необходимо создать три точки с разными координатами и вывести на экран их текстовое представление.
 
 ### Алгоритм решения
-**Создание класса Point:**
+**Создание класса original.Point:**
 ```java 
-public class Point {
+public class original.Point {
     private int x;
     private int y;
 
-    public Point(int x, int y) {
+    public original.Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -34,8 +34,12 @@ public class Point {
     }
 }
 ```
-**Пример использования Point:**
+**Пример использования original.Point:**
+
 ```java
+import original.InputUtils;
+import original.Point;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Создание точек:");
@@ -57,7 +61,7 @@ public class Main {
 ```java
 import java.util.Scanner;
 
-public class InputUtils {
+public class original.InputUtils {
     private static Scanner scanner = new Scanner(System.in);
 
     public static int readInt(String message) {
@@ -91,22 +95,39 @@ public class InputUtils {
 4.	 После создания всех трех объектов измените координаты первой и второй линий, причем сделайте это таким образом, чтобы положение третьей линии соответствовало требованиям пункта 3.  
 5.	Измените координаты первой линии так, чтобы при этом не изменились, координаты третьей линии.  
 ### Алгоритм решения
-**Создание класса Line:**
+**Создание класса original.Line:**
+
 ```java 
+import original.Point;
+
 public class Line {
     private Point start;
     private Point end;
 
-    public Line(Point start, Point end) {
+    public original.Line(
+    Point start, Point
+    end)
+
+    {
         this.start = start;
         this.end = end;
     }
 
-    public Point getStart() { return start; }
-    public void setStart(Point start) { this.start = start; }
+    public Point getStart() {
+        return start;
+    }
 
-    public Point getEnd() { return end; }
-    public void setEnd(Point end) { this.end = end; }
+    public void setStart(Point start) {
+        this.start = start;
+    }
+
+    public Point getEnd() {
+        return end;
+    }
+
+    public void setEnd(Point end) {
+        this.end = end;
+    }
 
     @Override
     public String toString() {
@@ -114,8 +135,13 @@ public class Line {
     }
 }
 ```
-**Пример использования Line:**
+**Пример использования original.Line:**
+
 ```java
+import original.InputUtils;
+import original.Line;
+import original.Point;
+
 public class Main {
     public static void main(String[] args) {
         Line line1 = new Line(
@@ -131,7 +157,7 @@ public class Main {
                 new Point(InputUtils.readInt("Введите X конца линии 2: "),
                         InputUtils.readInt("Введите Y конца линии 2: "))
         );
-        
+
         Line line3 = new Line(
                 new Point(line1.getStart().getX(), line1.getStart().getY()),
                 line2.getEnd()
@@ -156,15 +182,15 @@ public class Main {
  3. Заменить первую оценку Пети на число 5. Вывести на экран строковое представление Васи и Пети. Объяснить результат   
 4. Создать студента Андрея и скопировать ему оценки Васи так, чтобы изменение оценок Васи не влияло на Андрея.  
 ### Алгоритм решения  
-**Создание класса Student:**
+**Создание класса original.Student:**
 ```java
 import java.util.Arrays;
 
-public class Student {
+public class original.Student {
     private String name;
     private int[] grades;
     
-    public Student(String name, int... grades) {
+    public original.Student(String name, int... grades) {
         this.name = name;
         if (grades != null) {
             this.grades = Arrays.copyOf(grades, grades.length);
@@ -196,12 +222,16 @@ public class Student {
     }
 }
 ```
-**Пример использования Student:**
+**Пример использования original.Student:**
+
 ```java
+import original.InputUtils;
+import original.Student;
+
 public class Main {
     public static void main(String[] args) {
     }
-   
+
     private static void runStudentsTask() {
         // Ввод студентов
         System.out.println("Создание студентов:");
@@ -249,7 +279,7 @@ public class Main {
 ```java
 import java.util.Scanner;
 
-public class InputUtils {
+public class original.InputUtils {
     private static Scanner scanner = new Scanner(System.in);
     // Ввод строки
     public static String readString(String message) {
@@ -304,11 +334,11 @@ public class InputUtils {
 • Создайте и выведите на экран точку с координатами 25;6   
 • Создайте и выведите на экран точку с координатами 7;8  
 ### Алгоритм решения
-**Модифицированный InputUtils для значений по умолчанию:**
+**Модифицированный original.InputUtils для значений по умолчанию:**
 ```java
 import java.util.Scanner;
 
-public class InputUtils {
+public class original.InputUtils {
     public static int readIntOrDefault(String message, int defaultValue) {
         System.out.print(message);
         String line = scanner.nextLine();
@@ -324,8 +354,12 @@ public class InputUtils {
     }
 }
 ```
-**Пример использования Point:**
+**Пример использования original.Point:**
+
 ```java
+import original.InputUtils;
+import original.Point;
+
 public class Main {
     public static void main(String[] args) {
         Point p1 = new Point(InputUtils.readIntOrDefault("Введите X для точки 1: ", 0),
@@ -353,29 +387,34 @@ public class Main {
 2. Студент Максим без оценок  
 ### Алгоритм решения
 **Добавление 4 студента:**
+
 ```java
+import original.InputUtils;
+import original.Student;
+
 public class Main {
     public static void main(String[] args) {
         ...
     }
-    
-    }
-    private static void runStudentsTask() {
-        ...
-        String name4 = InputUtils.readName("Введите имя студента 4: ");
-        int[] grades4 = InputUtils.readGrades("Введите оценки студента 1 через пробел или запятую: ");
-        Student maksim = new Student(name4, grades4);
 
-        System.out.println(maksim);
+}
+
+private static void runStudentsTask() {
+        ...
+    String name4 = InputUtils.readName("Введите имя студента 4: ");
+    int[] grades4 = InputUtils.readGrades("Введите оценки студента 1 через пробел или запятую: ");
+    Student maksim = new Student(name4, grades4);
+
+    System.out.println(maksim);
         ....
-    }
+}
 }
 ```
-**Модифицированный InputUtils для студентов без оценок:**
+**Модифицированный original.InputUtils для студентов без оценок:**
 ```java
 import java.util.Scanner;
 
-public class InputUtils {
+public class original.InputUtils {
     ...
 
         // Если пользователь просто нажал Enter — возвращаем пустой массив
@@ -386,7 +425,7 @@ public class InputUtils {
     }
 }
 ```
-**Модифицированный Student для студентов без оценок:**
+**Модифицированный original.Student для студентов без оценок:**
 ```java
  @Override
     public String toString() {

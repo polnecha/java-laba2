@@ -1,3 +1,5 @@
+package original;
+
 public class Main {
     public static void main(String[] args) {
         while (true) {
@@ -58,7 +60,7 @@ public class Main {
         System.out.println("\nЛинии после создания:");
         System.out.println("Линия 1: " + line1);
         System.out.println("Линия 2: " + line2);
-        System.out.println("Линия 3 (копия, независимая): " + line3);
+        System.out.println("Линия 3: " + line3);
 
         System.out.println("\nИзменяем линии 1 и 2:");
 
@@ -75,7 +77,7 @@ public class Main {
         System.out.println("\nЛинии после изменений линий 1 и 2:");
         System.out.println("Линия 1: " + line1);
         System.out.println("Линия 2: " + line2);
-        System.out.println("Линия 3 (не изменилась, остаётся прежней): " + line3);
+        System.out.println("Линия 3: " + line3);
     }
     private static void runStudentsTask() {
         // Ввод студентов
